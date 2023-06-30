@@ -1,41 +1,59 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { z } from 'zod';
 
-function App() {
-  const [content, setContent] = useState([]);
+// Esquema de validação utilizando Zod
+const dataSchema = z.array(
+  z.object({
+    id: z.string(),
+    url: z.string().url(),
+    width: z.number(),
+    height: z.number(),
+  })
+);
 
-  const getCat = () => {
-    fetch('https://api.thecatapi.com/v1/images/search', {
-      method: "GET"
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setContent(data);
-      })
-    .catch((err) => {
-      console.log(err.message);
-    });
-  }
+const DataValidationPage = () => {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getCat();
+    setTimeout(() => {
+      setIsLoading(false);
+      // Tempo em milissegundos para exibir a frase "Carregando..."
+    }, 3000);
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.thecatapi.com/v1/images/search', { method: "GET" });
+        const result = await response.json();
+
+        // Verificando se os dados são válidos
+        const validatedData = dataSchema.parse(result);
+        setData(validatedData);
+      } catch (error) {
+        setError('⚠️ A aplicação está passando por instabilidade momentânea. Tente novamente mais tarde.');
+      }
+    };
+
+    fetchData();
   }, []);
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  // !data
+
+  if (isLoading) {
+    return <div>Carregando...</div>;
+  }
+
+  // Renderizando a aplicação corretamente com os dados válidos
   return (
-
-    // Retorno da API:
-    // {
-    //   "id": "3v5",
-    //   "url": "https://cdn2.thecatapi.com/images/3v5.jpg",
-    //   "width": 500,
-    //   "height": 375
-    // }
-
     <div>
       <h1>The cat API 🐈‍⬛</h1>
       {
-        content.map((cat) => (
+        data.map((cat) => (
           <div key={ cat.id }>
             <p><b>Id:</b> { cat.id }</p>
             <img
@@ -47,7 +65,7 @@ function App() {
             <p><b>Width:</b> { cat.width }</p>
             <p><b>Heigth:</b> { cat.height }</p>
             <button
-              onClick={ getCat }
+              // onClick={ fetchData }
               style={{ padding: "10px", width: "500px", backgroundColor: "#696969", border: "solid 1.5px transparent", borderRadius: "5px", fontSize: "35px", fontWeight: "bold"  }}
               onMouseOver={(e) => e.target.style.backgroundColor = "	#404040"}
               onMouseOut={(e) => e.target.style.backgroundColor = "#696969"}
@@ -59,6 +77,7 @@ function App() {
       }
     </div>
   );
-}
+};
 
-export default App;
+export default DataValidationPage;
+
