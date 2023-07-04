@@ -4,8 +4,8 @@ import { z } from 'zod';
 // Esquema de validação utilizando Zod
 const dataSchema = z.array(
   z.object({
-    id: z.string(),
-    url: z.string().url(),
+    id: z.string().nonempty(),
+    url: z.string().url().nonempty(),
     width: z.number(),
     height: z.number(),
   })
@@ -29,21 +29,27 @@ const DataValidationPage = () => {
 
         // Verificando se os dados são válidos
         const validatedData = dataSchema.parse(result);
+        console.log('Validação dos dados: ', validatedData);
+
         setData(validatedData);
       } catch (error) {
+        console.log('Erro de validação: ', error.message);
         setError('⚠️ A aplicação está passando por instabilidade momentânea. Tente novamente mais tarde.');
       }
     };
-
+    
     fetchData();
   }, []);
+
+  const handleReload = () => {
+    window.location.reload();
+  };
 
   if (error) {
     return <div>{error}</div>;
   }
 
   // !data
-
   if (isLoading) {
     return <div>Carregando...</div>;
   }
@@ -65,7 +71,7 @@ const DataValidationPage = () => {
             <p><b>Width:</b> { cat.width }</p>
             <p><b>Heigth:</b> { cat.height }</p>
             <button
-              // onClick={ fetchData }
+              onClick={ handleReload }
               style={{ padding: "10px", width: "500px", backgroundColor: "#696969", border: "solid 1.5px transparent", borderRadius: "5px", fontSize: "35px", fontWeight: "bold"  }}
               onMouseOver={(e) => e.target.style.backgroundColor = "	#404040"}
               onMouseOut={(e) => e.target.style.backgroundColor = "#696969"}
