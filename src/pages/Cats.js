@@ -47,12 +47,18 @@ const Cats = () => {
   };
 
   if (error) {
-    return <div>{error}</div>;
+    return <div id="error-cats"><h2>{error}</h2></div>;
   }
 
   // !data
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return (
+        <div id="loading-cats">
+          <h2>Carregando ...</h2>
+          {' '}
+          <h1>🐈⏳</h1>
+        </div>
+    )
   }
 
   // Renderizando a aplicação corretamente com os dados válidos
