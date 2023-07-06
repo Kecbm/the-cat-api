@@ -47,12 +47,18 @@ const Home = () => {
   };
 
   if (error) {
-    return <div>{error}</div>;
+    return <div id="error-home"><h2>{error}</h2></div>;
   }
 
   // !data
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return (
+      <div id="loading-home">
+        <h2>Carregando ...</h2>
+        {' '}
+        <h1>🐈⏳</h1>
+      </div>
+    )
   }
 
   // Renderizando a aplicação corretamente com os dados válidos
@@ -75,7 +81,7 @@ const Home = () => {
               onClick={ handleReload }
               id="btn-home"
             >
-              NOVO GATO 🐈
+              NOVO GATO
             </button>
           </div>
         ))
