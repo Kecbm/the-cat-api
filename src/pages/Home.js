@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { z } from 'zod';
+import '../css/Home.css';
 
 // Esquema de validação utilizando Zod
 const dataSchema = z.array(
@@ -64,7 +65,7 @@ const Home = () => {
             <img
               src={ cat.url }
               alt={ cat.id }
-              style={{ width: "500px", height: "500px" }}
+              id="img-home"
             />
             <p><b>Id:</b> { cat.id }</p>
             <p><b>Url:</b> { cat.url }</p>
@@ -72,9 +73,7 @@ const Home = () => {
             <p><b>Heigth:</b> { cat.height }</p>
             <button
               onClick={ handleReload }
-              style={{ padding: "10px", width: "500px", backgroundColor: "#696969", border: "solid 1.5px transparent", borderRadius: "5px", fontSize: "35px", fontWeight: "bold"  }}
-              onMouseOver={(e) => e.target.style.backgroundColor = "	#404040"}
-              onMouseOut={(e) => e.target.style.backgroundColor = "#696969"}
+              id="btn-home"
             >
               NOVO GATO 🐈
             </button>
