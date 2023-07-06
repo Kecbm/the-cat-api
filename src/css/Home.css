@@ -1,0 +1,19 @@
+#img-home {
+    width: 500px;
+    height: 500px;
+}
+
+#btn-home {
+    padding: 10px;
+    width: 500px;
+    background-color: #696969;
+    border: solid 1.5px transparent;
+    border-radius: 5px;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#btn-home:hover {
+    background-color: #404040;
+    color: white;
+}
