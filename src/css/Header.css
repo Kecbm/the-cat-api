@@ -1,0 +1,15 @@
+.btn-header {
+    padding: 5px;
+    width: 12%;
+    background-color: #696969;
+    border: solid 1.5px transparent;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: 5px;
+}              
+
+.btn-header:hover {
+    background-color: #404040;
+    color: white;
+}
