@@ -89,12 +89,18 @@ const Request = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div id="error-request"><h2>{error}</h2></div>;
   }
 
   // !data
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return (
+        <div id="loading-request">
+          <h2>Carregando ...</h2>
+          {' '}
+          <h1>🐈⏳</h1>
+        </div>
+    )
   }
 
   // Renderizando a aplicação corretamente com os dados válidos
