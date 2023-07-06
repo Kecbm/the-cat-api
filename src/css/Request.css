@@ -33,3 +33,11 @@
 .label-request {
     margin-right: 110px;
 }
+
+#error-request {
+    margin-top: 400px;
+}
+
+#loading-request {
+    margin-top: 400px;
+}
