@@ -68,23 +68,23 @@ const Request = () => {
 
   const handleButtonClick = () => {
     const dataUserSent = [
-        {
-            "id": inputId,
-            "url": inputUrl,
-            "width": InputWidth,
-            "height": inputHeight
-        }
+      {
+          "id": inputId,
+          "url": inputUrl,
+          "width": InputWidth,
+          "height": inputHeight
+      }
     ]
 
     try {
-        // Verificando se os dados que o usuário digitou são válidos
-        const validatedData = dataSchema.parse(dataUserSent);
-        console.log('Validação dos dados: ', dataUserSent);
+      // Verificando se os dados que o usuário digitou são válidos
+      const validatedData = dataSchema.parse(dataUserSent);
+      console.log('Validação dos dados: ', dataUserSent);
 
-        setData(validatedData);
+      setData(validatedData);
     } catch (error) {
-    console.log('Erro de validação: ', error.message);
-    setError('⚠️ A aplicação está passando por instabilidade momentânea. Tente novamente mais tarde.');
+      console.log('Erro de validação: ', error.message);
+      setError('⚠️ A aplicação está passando por instabilidade momentânea. Tente novamente mais tarde.');
     }
   }
 
@@ -95,11 +95,11 @@ const Request = () => {
   // !data
   if (isLoading) {
     return (
-        <div id="loading-request">
-          <h2>Carregando ...</h2>
-          {' '}
-          <h1>🐈⏳</h1>
-        </div>
+      <div id="loading-request">
+        <h2>Carregando ...</h2>
+        {' '}
+        <h1>🐈⏳</h1>
+      </div>
     )
   }
 
@@ -123,7 +123,7 @@ const Request = () => {
                 <input type="text" id="inputUrl" defaultValue={ cat.url } onChange={ handleChangeInputUrl } className="input-request" />
 
                 <label htmlFor="inputWidth" className="label-request"><b>Width:</b></label>
-                <input type="number" id="inputWidth" defaultValue={ cat.width } onChange={handleChangeInputWidth} className="input-request" />
+                <input type="number" id="inputWidth" defaultValue={ cat.width } onChange={ handleChangeInputWidth } className="input-request" />
 
                 <label htmlFor="inputHeight" className="label-request"><b>Height:</b></label>
                 <input type="number" id="inputHeight" defaultValue={ cat.height } onChange={ handleChangeInputHeight } className="input-request" />
