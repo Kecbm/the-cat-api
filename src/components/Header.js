@@ -16,9 +16,9 @@ class Header extends Component {
             <Link to='/cats'>
                 <button className='btn-header'>10 GATOS</button>
             </Link>
-            <Link to='/catforbreed'>
+            {/* <Link to='/catforbreed'>
                 <button className='btn-header'>GATO POR RAÇA</button>
-            </Link>
+            </Link> */}
         </nav>
       </div>
     );
