@@ -59,11 +59,11 @@ const Request = () => {
   }
 
   const handleChangeInputWidth = (event) => {
-    setInputWidth(event.target.value);
+    setInputWidth(parseInt(event.target.value));
   }
 
   const handleChangeInputHeight = (event) => {
-    setInputHeight(event.target.value);
+    setInputHeight(parseInt(event.target.value));
   }
 
   const handleButtonClick = () => {
@@ -117,16 +117,16 @@ const Request = () => {
             />
             <div id="inputs-request">
                 <label htmlFor="inputId" className="label-request"><b>Id:</b></label>
-                <input type="text" id="inputId" defaultValue={ cat.id } onChange={ handleChangeInputId } className="input-request" />
+                <input id="inputId" defaultValue={ cat.id } onChange={ handleChangeInputId } className="input-request" />
 
                 <label htmlFor="inputUrl" className="label-request"><b>Url:</b></label>
-                <input type="text" id="inputUrl" defaultValue={ cat.url } onChange={ handleChangeInputUrl } className="input-request" />
+                <input id="inputUrl" defaultValue={ cat.url } onChange={ handleChangeInputUrl } className="input-request" />
 
                 <label htmlFor="inputWidth" className="label-request"><b>Width:</b></label>
-                <input type="number" id="inputWidth" defaultValue={ cat.width } onChange={ handleChangeInputWidth } className="input-request" />
+                <input id="inputWidth" defaultValue={ cat.width } onChange={ handleChangeInputWidth } className="input-request" />
 
                 <label htmlFor="inputHeight" className="label-request"><b>Height:</b></label>
-                <input type="number" id="inputHeight" defaultValue={ cat.height } onChange={ handleChangeInputHeight } className="input-request" />
+                <input id="inputHeight" defaultValue={ cat.height } onChange={ handleChangeInputHeight } className="input-request" />
             </div>
             <button
               onClick={ handleButtonClick }
