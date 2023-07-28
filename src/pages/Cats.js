@@ -80,7 +80,7 @@ const Cats = () => {
             onClick={ handleReload }
             id="btn-cats"
         >
-            NOVOS GATOS 🐈
+            NOVOS GATOS
         </button>
     </div>
   );
